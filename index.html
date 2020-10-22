@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgb(0, 119, 255);
+            padding: 5%;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: white;
+            margin-bottom: 5%;
+        }
+
+        .row {
+            display: flex;
+            padding: 10px
+        }
+
+        .row__title {
+            color: white;
+            margin-right: 5%;
+            width: 200px
+        }
+
+        input {
+
+            padding: 10px;
+        }
+
+        .btn {
+            padding: 10px 40px;
+            color: white;
+            background: none;
+            border: solid 2px white;
+            border-radius: 5px;
+        }
+
+        table {
+            color: white;
+            width: 100%;
+        }
+
+        td {
+            border-bottom: solid 1px white !important;
+            padding: 10px
+        }
+    </style>
+    <!-- <script src="programa.js"></script> -->
+</head>
+
+<body>
+    <h1>PLAN DE PAGOS</h1>
+    <h2>Gestiona los pagos de tus empleados</h2>
+
+    <div class="row">
+        <div class="row__title">
+            EMPLEADO
+        </div>
+        <div>
+            <input type="text" id="name">
+        </div>
+    </div>
+    <div class="row">
+        <div class="row__title">
+            SUELDO DIARIO
+        </div>
+        <div>
+            <input type="num" id="sueldo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="row__title">
+            DIAS TRABAJADOS
+        </div>
+        <div>
+            <input type="text" id="diasTrabajados">
+        </div>
+    </div>
+    <div class="row">
+        <div class="row__title">
+            FALTAS
+        </div>
+        <div>
+            <input type="text" id="falta">
+        </div>
+    </div>
+
+    <hr>
+
+    <button onclick="trabajo()" class="btn">AÑADIR</button>
+    <hr>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>NOMBRE</th>
+                    <th>SUELDO</th>
+                    <th>DIAS</th>
+                    <th>FALTAS</th>
+                    <th>DESCUENTO</th>
+                    <th>PAGO TOTAL</th>
+                </tr>
+            </thead>
+            <tbody id="respuesta">
+
+
+            </tbody>
+
+
+        </table>
+
+    </div>
+
+    <script>
+
+        function trabajo() {
+            if (document.getElementById("name").value == "") {
+                alert("Falta el nombre")
+                return
+            }
+            if (document.getElementById("sueldo").value == "") {
+                alert("Falta el campo de sueldo")
+                return
+            }
+            if (document.getElementById("diasTrabajados").value == "") {
+                alert("Falta el campo de dias trabajados")
+                return
+            }
+
+            var sueldoEmpleado = document.getElementById("sueldo").value;
+            var diasTrabajados = document.getElementById("diasTrabajados").value;
+            sueldoSemanal = parseInt(sueldoEmpleado) * parseInt(diasTrabajados);
+            console.log(sueldoSemanal)
+
+
+            var faltas = document.getElementById("falta").value;
+            var descuentoDiaPorFaltar = sueldoEmpleado;
+            var descuentos = parseInt(faltas) * parseInt(descuentoDiaPorFaltar);
+            console.log(descuentos);
+            var pago = 0;
+
+            if (!faltas) {
+                pago = sueldoSemanal;
+                descuentos = 0
+                faltas = 0
+            } else {
+                pago = sueldoSemanal - descuentos;
+            }
+
+            document.getElementById('respuesta').innerHTML += `
+
+            <tr>
+                <td>${document.getElementById("name").value}</td>
+                <td>${sueldoEmpleado}</td>
+                <td>${document.getElementById("diasTrabajados").value
+                }</td >
+                <td>${faltas}</td>
+                <td>${descuentos}</td>
+                <td>${pago}</td>
+
+            </tr >
+
+            `
+        }
+
+    </script>
+
+</body>
+
+
+</html>
