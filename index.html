@@ -65,7 +65,7 @@
 
     <div class="row">
         <div class="row__title">
-            EMPLEADO
+            NOMBRE EMPLEADO
         </div>
         <div>
             <input type="text" id="name">
@@ -73,7 +73,7 @@
     </div>
     <div class="row">
         <div class="row__title">
-            SUELDO DIARIO
+            SALARIO DIARIO
         </div>
         <div>
             <input type="num" id="sueldo">
@@ -142,13 +142,11 @@
             var sueldoEmpleado = document.getElementById("sueldo").value;
             var diasTrabajados = document.getElementById("diasTrabajados").value;
             sueldoSemanal = parseInt(sueldoEmpleado) * parseInt(diasTrabajados);
-            console.log(sueldoSemanal)
 
 
             var faltas = document.getElementById("falta").value;
             var descuentoDiaPorFaltar = sueldoEmpleado;
             var descuentos = parseInt(faltas) * parseInt(descuentoDiaPorFaltar);
-            console.log(descuentos);
             var pago = 0;
 
             if (!faltas) {
