@@ -9,7 +9,7 @@
     <style>
         body {
             background-color: rgb(0, 119, 255);
-            padding: 1% 5% 5% 20%;
+            padding: 1% 5% 5% 10%;
         }
 
         h1 {
@@ -100,12 +100,12 @@
     <hr>
 
     <button onclick="trabajo()" class="btn">CAPTURAR</button>
-    <button onclick="borrar()" id="name" class="btn">CORREGIR</button>
-    <button onclick="borrar()" id="name" class="btn">IMPRIMIR</button>
-    <button onclick="borrar()" id="name" class="btn">BORRAR</button>
+    <button onclick="corregir()" id="name" class="btn">CORREGIR</button>
+    <button onclick="imprimir()" id="imprime" class="btn">IMPRIMIR</button>
+    <button onclick="borrar()" id="delete" class="btn">BORRAR</button>
 
     <div>
-        <table>
+        <table id="lista">
             <thead>
                 <tr>
                     <th>NOMBRE</th>
@@ -175,16 +175,25 @@
 
             `
         }
-        function borrar() {
+        function borrar(row) {
             if (document.getElementById("name").value !== "") {
                 alert("borraras  datos")
-            } else { this.name = "" }
-            this.row = ""
+            }
+
+        };
+        function corregir(row) {
+            if (document.getElementById("sueldo").value !== "") {
+                alert("corregir")
+            }
 
         }
+        function imprimir(row) {
+            if (document.getElementById("name").value !== "") {
+                alert("Preciona Boton Derecho y selecciona imprimir ")
+            }
 
+        }
     </script>
-
 </body>
 
 
